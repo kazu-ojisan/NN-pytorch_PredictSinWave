@@ -67,7 +67,6 @@ def training(N, Nte, bs, n_epoch, h_units, act):
     # モデルセットアップ
     model = SIN_NN(h_units, act)
     optimizer = optim.Adam(model.parameters())
-    # optimizer.setup(model)
     MSE = nn.MSELoss()
 
     # loss格納配列
@@ -128,7 +127,7 @@ def training(N, Nte, bs, n_epoch, h_units, act):
 
         if epoch % 20 == 0:
             # epoch20ごとのテスト予測結果
-            plt.figure(figsize=(4, 3))
+            plt.figure(figsize=(5, 4))
             y_test = model.predict(x_test)
             plt.plot(x_test, t_test, label = "target")
             plt.plot(x_test, y_test, label = "predict")
@@ -149,7 +148,7 @@ def training(N, Nte, bs, n_epoch, h_units, act):
     print("Time : {} [s]".format(total_time))
 
     # 誤差のグラフ作成
-    plt.figure(figsize=(4, 3))
+    plt.figure(figsize=(5, 4))
     plt.plot(tr_loss, label = "training")
     plt.plot(te_loss, label = "test")
     plt.yscale('log')
